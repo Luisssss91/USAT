@@ -1,38 +1,37 @@
-import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { 
   LayoutDashboard, 
-  Users, 
-  GraduationCap, 
-  UserCheck, 
+  User, 
+  Book, 
   FileText, 
-  MessageSquare, 
-  BarChart3, 
+  Calendar, 
   CreditCard,
+  UserCheck,
+  Bell,
   Menu,
   X,
-  School
+  GraduationCap
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
-const menuItems = [
-  { title: "Dashboard", icon: LayoutDashboard, path: "/admin" },
-  { title: "Students", icon: Users, path: "/admin/students" },
-  { title: "Academic", icon: GraduationCap, path: "/admin/academic" },
-  { title: "Human Resource", icon: UserCheck, path: "/admin/hr" },
-  { title: "Examinations", icon: FileText, path: "/admin/examinations" },
-  { title: "Communication", icon: MessageSquare, path: "/admin/communication" },
-  { title: "Reports", icon: BarChart3, path: "/admin/reports" },
-  { title: "Fees", icon: CreditCard, path: "/admin/fees" },
+const studentMenuItems = [
+  { title: "Dashboard", icon: LayoutDashboard, path: "/student" },
+  { title: "Profile", icon: User, path: "/student/profile" },
+  { title: "Grades", icon: Book, path: "/student/grades" },
+  { title: "Assignments", icon: FileText, path: "/student/assignments" },
+  { title: "Timetable", icon: Calendar, path: "/student/timetable" },
+  { title: "Attendance", icon: UserCheck, path: "/student/attendance" },
+  { title: "Fees", icon: CreditCard, path: "/student/fees" },
+  { title: "Announcements", icon: Bell, path: "/student/announcements" },
 ];
 
-interface SidebarProps {
+interface StudentSidebarProps {
   isOpen: boolean;
   onToggle: () => void;
 }
 
-export function Sidebar({ isOpen, onToggle }: SidebarProps) {
+export function StudentSidebar({ isOpen, onToggle }: StudentSidebarProps) {
   return (
     <>
       {/* Mobile overlay */}
@@ -53,11 +52,11 @@ export function Sidebar({ isOpen, onToggle }: SidebarProps) {
         <div className="flex items-center justify-between p-6 border-b border-card-border">
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <School className="h-5 w-5 text-primary-foreground" />
+              <GraduationCap className="h-5 w-5 text-primary-foreground" />
             </div>
             <div>
-              <h2 className="font-semibold text-card-foreground">EduManage</h2>
-              <p className="text-xs text-muted-foreground">School Dashboard</p>
+              <h2 className="font-semibold text-card-foreground">Student Portal</h2>
+              <p className="text-xs text-muted-foreground">Alex Johnson</p>
             </div>
           </div>
           <Button
@@ -73,7 +72,7 @@ export function Sidebar({ isOpen, onToggle }: SidebarProps) {
         {/* Navigation */}
         <nav className="p-4">
           <ul className="space-y-2">
-            {menuItems.map((item) => (
+            {studentMenuItems.map((item) => (
               <li key={item.path}>
                 <NavLink
                   to={item.path}
@@ -92,6 +91,17 @@ export function Sidebar({ isOpen, onToggle }: SidebarProps) {
             ))}
           </ul>
         </nav>
+
+        {/* Quick Actions */}
+        <div className="absolute bottom-4 left-4 right-4">
+          <div className="p-3 bg-secondary/50 rounded-lg">
+            <p className="text-sm font-medium">Need Help?</p>
+            <p className="text-xs text-muted-foreground mb-2">Contact your teacher or admin</p>
+            <Button size="sm" variant="outline" className="w-full">
+              Get Support
+            </Button>
+          </div>
+        </div>
       </div>
     </>
   );

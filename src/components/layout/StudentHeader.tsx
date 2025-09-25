@@ -4,11 +4,11 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { useNavigate } from "react-router-dom";
 
-interface HeaderProps {
+interface StudentHeaderProps {
   onMenuToggle: () => void;
 }
 
-export function Header({ onMenuToggle }: HeaderProps) {
+export function StudentHeader({ onMenuToggle }: StudentHeaderProps) {
   const navigate = useNavigate();
 
   return (
@@ -29,7 +29,7 @@ export function Header({ onMenuToggle }: HeaderProps) {
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
               <Input
-                placeholder="Search students, staff..."
+                placeholder="Search assignments, grades..."
                 className="pl-9 w-64"
               />
             </div>
@@ -45,7 +45,7 @@ export function Header({ onMenuToggle }: HeaderProps) {
               variant="destructive" 
               className="absolute -top-2 -right-2 h-5 w-5 rounded-full p-0 flex items-center justify-center text-xs"
             >
-              3
+              2
             </Badge>
           </Button>
 
@@ -65,8 +65,8 @@ export function Header({ onMenuToggle }: HeaderProps) {
               <User className="h-4 w-4 text-primary-foreground" />
             </div>
             <div className="hidden lg:block text-left">
-              <p className="text-sm font-medium">Admin User</p>
-              <p className="text-xs text-muted-foreground">Administrator</p>
+              <p className="text-sm font-medium">Alex Johnson</p>
+              <p className="text-xs text-muted-foreground">Student - 10th A</p>
             </div>
           </Button>
         </div>
